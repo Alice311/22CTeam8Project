@@ -1,0 +1,25 @@
+1853548 Bridget Batio; Accounting; Cupertino; A
+1925486 Nichole Becker; Art; Sunnyvale; 
+2050441 Noah Cardoza; Chemistry; Santa Clara;
+1919448 William Chang; Dance;Santa Clara;
+1999895 Injun Choi; Dance; West San Jose;
+2016707 Yen Ting Chung; Geology; West San Jose;
+1936574 Nhung Dang; Geology;Santa Clara;
+2058451 Sophia Estrella; History; Foothill;
+1910314 Kryzll Garcia; Chemistry; Foothill;
+2027787 James Giomi; History; Mountainview;
+1606086 Honhi Haruno; Geology; Mountainview;
+1751189 Yuli Hillel; Art; Mountainview;
+2077881 Huu Anh Tuan Huynh; Chemistry; Cupertino;
+2047520 Changhyun Kim; History; Mountainview;
+1910355 Minsuk Kim; Humanities; Mountainview;
+1926799 Victoria Lam; Computer Science; Sunnyvale;
+2087799 Annie Le; Economics; Mountainview;
+2024016 Dandan Li; Computer Science; Foothill;
+1961408 Quan Li; Philosophy; West San Jose;
+2005551 Xianghan Qi; Computer Science; West San Jose;
+1933308 Rodel Quintos; Economics; Santa Clara;
+2015980 Eylie Razegh-Panah; Computer Science; Cupertino;
+2031011 Jesus Romero; Humanities; Sunnyvale;
+1990407 Julie Soto; Dance; Sunnyvale;
+2050060 Xinyi Sun; Art; Cupertino;
