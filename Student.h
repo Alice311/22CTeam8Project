@@ -4,10 +4,11 @@
 //
 //  Created by SOFLY on 11/8/18.
 //  Copyright © 2018 SOFLY. All rights reserved.
-//
+//  Programmer Isaac Li
 
 #ifndef Student_h
 #define Student_h
+#include "Course.h"
 #include <cstring>
 
 using namespace std;
@@ -26,6 +27,7 @@ private:
 
 
 public:
+    Student(){}
     Student(string s, string n, string m, string a, int y){
         studentID = s;
         name = n;
@@ -36,15 +38,17 @@ public:
     }
 
     /*Accessors*/
-    string getStudentID(){return studentID;}
-    string getName(){return name;}
-    string getMajor(){return major;}
-    string getAddress(){return address;}
+    string getStudentID(){return studentID;} const
+    string getName(){return name;} const
+    string getMajor(){return major;} const
+    string getAddress(){return address;} const
     Course* getCourses(){return courses;}
     Course getCourse(string cs){
         for(int i = 0; i < MAX_COURSE; i++)
             if(courses[i].getCourseName() == cs)
                 return courses[i];
+        Course emptyCourse;
+        return emptyCourse;
     }
     int getYear(){return year;}
 
@@ -79,8 +83,15 @@ public:
         return false;
     }
 
+    friend ostream& operator<< (ostream& os, const Student& stu);
 
 };
 
+ostream& operator<< (ostream& os, const Student& stu){
+    os << stu.studentID;
+    return os;
+}
+
 
 #endif /* Student_h */
+
