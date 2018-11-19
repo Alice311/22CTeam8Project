@@ -1,6 +1,5 @@
 // Node for a binary tree
-// Created by Frank M. Carrano and Tim Henry.
-// Modified by
+// Programmer Isaac Li
 
 #ifndef _BINARY_NODE
 #define _BINARY_NODE
@@ -9,7 +8,7 @@ template<class ItemType>
 class BinaryNode
 {
 private:
-    ItemType              item;         // Data portion
+    ItemType item;         // Data portion
     BinaryNode<ItemType>* leftPtr;        // Pointer to left child
     BinaryNode<ItemType>* rightPtr;        // Pointer to right child
 
@@ -32,4 +31,5 @@ public:
 };
 
 #endif
+
 
