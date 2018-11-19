@@ -1,0 +1,64 @@
+
+/**********************************************
+                    I/O
+***********************************************/
+void readFile(string filename,BinarySearchTree<student*>* tree1, BinarySearchTree<student*>* tree2,Stack<student*>* sHold,HashTable<student*> &hashT)
+{
+    ifstream infile;
+    infile.open(filename.c_str());
+    if (infile.fail())
+    {
+        cout << "\n\Error opening the input file: " << filename << endl;
+        exit(-1);
+    }
+
+    string studentID;
+    string name;
+    string major;
+    string address;
+    Course *courses;
+    int year;
+
+    while(infile >> studentID )
+    {
+        infile.ignore();
+        getline(infile, name, ';');
+        getline(infile, major, ';');
+        getline(infile, address, ';');
+        getline(infile, courses, ';');
+        infile >> year;
+        student* m = new student;
+
+        m->setStudentID(studentID);
+        m->setName(name);
+        m->setMajor(major);
+        m->setAddress(address);
+        m->setYear(year);
+        m->setCourse(courses);
+        
+
+
+        tree1 -> insert(m,isLHSSmaller_withStudentID);
+        tree2 -> insert(m,isLHSSmaller_withName);
+        hashT.insert(m->getStudentID(),m);
+        sHold->push(m);
+        //display(m);
+    }
+    infile.close();
+}
+
+
+void writeFile(string filename, Stack<student*>* sHold)
+{
+    ofstream outfile;
+    outfile.open(filename);
+
+
+    while(!sHold->isEmpty())
+    {
+        student* m = new student;
+        sHold->pop(m);
+        cout << m->getStudentID() << " " << m->getName() << ";" << m->get()Major << " " << m->getAddress() << " " << m->getCourse() << ";" << m->getYear() << endl;
+        outfile << m->getStudentID() << " " << m->getName() << ";" << m->getMajor() << " " << m->getAddress() << " " << m->getCourse() << ";" << m->getYear();
+
+    }
