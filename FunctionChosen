@@ -1,0 +1,255 @@
+/************************************************************
+                   Function Chosen
+                 
+************************************************************/
+bool functionChoosen(char menu,BinarySearchTree<student*>* tree1, BinarySearchTree<student*>* tree2,Stack<student*> *sHold, Stack<student*> *sTemp,HashTable<student*> &hashT)
+{
+    bool stop = true, lstop = true, sstop = true;
+    char l, s;
+    string filename = "student.txt";  //根据txt名称可能更改
+    switch(menu)
+    {
+        case 'L':
+        case 'l':
+        {
+            do
+            {   listMenu();
+                cin >> l;
+                cout << "\t\tConfirm : Your choice is " << l << "." << endl;
+                lstop = listChoosen(l, tree1, tree2, sHold,hashT);
+            }
+            while(lstop);
+            break;
+        }
+
+        case 'S':
+        case 's':
+            do
+            {   searchMenu();
+                cin >> s;
+                cout << "\t\tConfirm : Your choice is " << s << "." << endl;
+                sstop = searchChoosen(s, tree1,tree2, sHold,hashT);
+            }
+            while(sstop);
+
+            break;
+
+        case 'A':
+        case 'a':
+            cout << "***********************************************************************\n";
+            cout << "Add a new student" << endl;
+            cout << "***********************************************************************\n";
+            if(addItem(tree1, tree2, sHold, sTemp,hashT))
+            {
+                cout << "Successful added! New tree (studentID) as follow" << endl;
+                tree1->indentedList(display2);
+                cout << endl;
+            }
+            else
+            {
+                cout << "Added fail!" << endl;
+            }
+            break;
+
+        case 'D':
+        case 'd':
+
+            cout << "***********************************************************************\n";
+            cout << "Deleted a student" << endl;
+            cout << "***********************************************************************\n";
+            if(deleteItem(tree1, tree2,sHold,sTemp,hashT))
+            {
+                cout << "Successful deleted! New tree as follow" << endl;
+                tree1->indentedList(display2);
+                cout << endl;
+
+            }
+            else
+            {
+                cout << "Delete fail!" << endl;
+            }
+            break;
+
+        case 'R':
+        case 'r':
+
+            cout << "***********************************************************************\n";
+            cout << "Write the report to file" << endl;
+            cout << "***********************************************************************\n";
+            writeFile(filename, sHold);
+
+            break;
+
+        case 'H':
+        case 'h':
+
+            cout << "***********************************************************************\n";
+            cout << "Show Menu" << endl;
+            cout << "***********************************************************************\n";
+            showMenu();
+
+            break;
+
+        case 'E':
+        case 'e':
+            cout << "***********************************************************************\n";
+            cout << "Thanks for using! Program stop!" << endl;
+            cout << "***********************************************************************\n";
+            stop = false;
+            break;
+
+        default:
+            cout << "***********************************************************************\n";
+            cout << "Please enter the letter in the menu." << endl;
+            cout << "**********************************************\n";
+    }
+    return stop;
+}
+
+bool listChoosen(char menu,BinarySearchTree<student*>* tree1, BinarySearchTree<student*>* tree2,Stack<student*> *sHold, HashTable<student*> &hashT)
+{
+    bool stop = true;
+    char ranking;
+    switch(menu)
+    {
+        case 'U':
+        case 'u':
+            cout << "***********************************************************************\n";
+            cout << "Print Unsorted:" << endl;
+            cout << "***********************************************************************\n";
+            printDatas(hashT);
+            break;
+
+        case 'p':
+        case 'P':
+            cout << "***********************************************************************\n";
+            cout << "Print by studentID:" << endl;
+            cout << "***********************************************************************\n";
+            treePrint(tree1);
+            break;
+
+        case 'B':
+        case 'b':
+            cout << "***********************************************************************\n";
+            cout << "Print by name:" << endl;
+            cout << "***********************************************************************\n";
+            treePrint(tree2);
+            break;
+
+        case 'T':
+        case 't':
+
+            cout << "***********************************************************************\n";
+            cout << "Indented list (use tree)" << endl;
+            cout << "***********************************************************************\n";
+            cout << "+++++++++++" << endl;
+            cout << "+   studentID   +" << endl;
+            cout << "+++++++++++" << endl;
+            tree1->indentedList(display2);
+            cout << endl;
+            cout << "***********************************************************************\n";
+            cout << "++++++++++++" << endl;
+            cout << "+   name   +" << endl;
+            cout << "++++++++++++" << endl;
+            tree2->indentedList(display2);
+            cout << endl;
+            cout << "***********************************************************************\n";
+
+            break;
+        case 's':
+        case 'S':
+            Statistics(hashT);
+            break;
+        case 'H':
+        case 'h':
+
+            cout << "***********************************************************************\n";
+            cout << "Show Menu" << endl;
+            cout << "***********************************************************************\n";
+            listMenu();
+
+            break;
+
+        case 'E':
+        case 'e':
+            cout << "***********************************************************************\n";
+            cout << "Thanks for using! Program stop!" << endl;
+            cout << "***********************************************************************\n";
+            stop = false;
+            break;
+
+        default:
+            cout << "***********************************************************************\n";
+            cout << "Please enter the letter in the menu." << endl;
+            cout << "***********************************************************************\n";
+
+            break;
+    }
+    return stop;
+}
+
+bool searchChoosen(char menu, BinarySearchTree<makeup*>* tree1, BinarySearchTree<makeup*>* tree2,Stack<makeup*> *sHold, HashTable<makeup*> &hashT)
+{
+    bool stop = true;
+    switch(menu)
+    {
+        case 'P':
+        case 'p':
+            cout << "***********************************************************************\n";
+            cout << "Search by studentID " << endl;
+            cout << "***********************************************************************\n";
+            searchbySku(hashT);
+            break;
+
+        case 'T':
+        case 't':
+            cout << "***********************************************************************\n";
+            cout << "Search by Name " << endl;
+            cout << "***********************************************************************\n";
+            searchbyName(tree2);
+            break;
+
+        case 'C':
+        case 'c':
+            cout << "***********************************************************************\n";
+            cout << "Search by brand " << endl;
+            cout << "***********************************************************************\n";
+            searchbyBrand(sHold);
+            break;
+
+        case 'R':
+        case 'r':
+            cout << "***********************************************************************\n";
+            cout << "Search by the range of price " << endl;
+            cout << "***********************************************************************\n";
+            searchbyPrice(sHold);
+            break;
+        case 'Q':
+        case 'q':
+            cout << "***********************************************************************\n";
+            cout << "Search by the range of quantity " << endl;
+            cout << "***********************************************************************\n";
+            searchbyQuantity(sHold);
+            break;
+
+        case 'H':
+        case 'h':
+
+            cout << "***********************************************************************\n";
+            cout << "Show Menu" << endl;
+            cout << "***********************************************************************\n";
+            searchMenu();
+
+            break;
+        case 'E':
+        case 'e':
+            stop = false;
+            return stop;
+        default:
+            cout << "***********************************************************************\n";
+            cout << "Please enter the letter in the menu." << endl;
+            cout << "***********************************************************************\n";
+    }
+    return stop;
+
+}
